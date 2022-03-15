@@ -10,20 +10,24 @@ function PosterPic(props) {
         
         // access the function handed down to this component from Display.js
         props.handleChoice(props.img)
+
+        // ////
+        // ternery from cookies codealong
+        // 
+
+        
     }
 
 
     return (
         <div className="indivCard">
-            <div className={props.flipped ? 'flipped' : ''}>
                 <img className="cardFront" src={props.img} alt={props.alt} />
 
                 <img 
-                    className='cardBack' 
-                    src="/assets/newCardBack.jpg" alt="card back" 
-                    onClick={handleClick}
+                className={props.flipped ? 'flipped' : 'cardBack' }
+                src="/assets/newCardBack.jpg" alt="card back" 
+                onClick={handleClick}
                 /> 
-            </div>
         </div>
     )
 }

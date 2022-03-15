@@ -20,6 +20,7 @@ import Display from './component/Display.js';
 
 
 function App() {
+  const [ baseUrl, setBaseUrl ] = useState('')
   const [ movies, setMovies ] = useState([])
   const [ finalSelections, setFinalSelections ] = useState([])
 
@@ -100,22 +101,36 @@ const updateFinalSelections = function(array) {
 
   
 // page reload button to set a new game
-  function refreshPage() {
-    window.location.reload(false);
-}
+  function handleClick(e) {
+    // window.location.reload(false);
+    e.preventDefault(e);
+    // console.log(e.target.value);
+    if (baseUrl === '') {
+      setBaseUrl(e.target.value)
+    } else {
+      setBaseUrl('');
 
-// getting the API call
+    }
+  }
+  
+  // function addUrlLink(value) {
+  //   setBaseUrl(value);
+  //   console.log('addUrl')
+  // }
+
+
+  // getting the API call
   useEffect( () => {
     axios({
-      url: 'https://ghibliapi.herokuapp.com/films'
+      url: baseUrl,
     }).then((apiData) => {
       // console.log(apiData.data);
       
       const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
-
+      
       setMovies(shuffledThings);
     })
-  }, [])
+  }, [ baseUrl ])
 
 
   return (
@@ -127,7 +142,7 @@ const updateFinalSelections = function(array) {
 
         <p>Test your memory! Find the matching pairs by clicking on each card to reveal it.  </p>
 
-        <button onClick={refreshPage}>New Game</button>
+        <button value='https://ghibliapi.herokuapp.com/films' onClick={handleClick}>New Game</button>
 
         <div className='gameContainer wrapper'>
           <Display moviePosters={finalSelections} matchedPosters={trueMatch} flippedCards={updateFinalSelections} />

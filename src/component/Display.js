@@ -38,7 +38,9 @@ function Display(props) {
                 reset()
             } else {
                 // console.log('not a match');
-                reset()
+                setTimeout( () => {
+                    reset()
+                }, 1000)
             }
 
         }

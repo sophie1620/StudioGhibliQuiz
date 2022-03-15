@@ -41,11 +41,11 @@ button:hover {
   flex-wrap: wrap;
 }
 
-.indivCard div{
+.indivCard {
   display: flex;
   border: 1px solid blue;
   position: relative;
-  width: 450px;
+  width: 300px;
 }
 
 img {
@@ -55,7 +55,7 @@ img {
   border: 2px solid whitesmoke;
 }
 
-img.cardBack {
+.cardBack {
   position: absolute;
   /* height: 592px; */
   /* width: 395px; */
@@ -63,7 +63,8 @@ img.cardBack {
 
 
 .flipped {
-  transform: rotateY(0deg);
+  height: 0;
+  position: absolute;
 }
 
 
