@@ -21,9 +21,9 @@ import Display from './component/Display.js';
 
 function App() {
   const [ movies, setMovies ] = useState([])
-  const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
-  // const [ selectedMovies, setSelectedMovies ] = useState([])
-  // const [ splicedMovies, setSplicedMovies ] = useState([])
+  // const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
+  const [ selectedMovies, setSelectedMovies ] = useState([])
+  const [ splicedMovies, setSplicedMovies ] = useState([])
   const [ finalSelections, setFinalSelections ] = useState([])
 
 
@@ -141,9 +141,8 @@ function App() {
     }).then((apiData) => {
       // console.log(apiData.data);
       
-      const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
-      
-      setMovies(shuffledThings);
+      // const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
+      // setMovies(shuffledThings);
 
       // setMovies(apiData.data)
     })
