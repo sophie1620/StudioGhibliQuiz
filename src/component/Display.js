@@ -49,7 +49,7 @@ function Display(props) {
                 // console.log('not a match');
                 setTimeout( () => {
                     reset()
-                }, 1500)
+                }, 1000)
             }
 
         }
