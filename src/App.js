@@ -20,8 +20,10 @@ import Display from './component/Display.js';
 
 
 function App() {
-  const [ baseUrl, setBaseUrl ] = useState('')
   const [ movies, setMovies ] = useState([])
+  const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
+  // const [ selectedMovies, setSelectedMovies ] = useState([])
+  // const [ splicedMovies, setSplicedMovies ] = useState([])
   const [ finalSelections, setFinalSelections ] = useState([])
 
 
@@ -36,7 +38,18 @@ function App() {
     return array
   }
   
+
+  // // take the data that is received from API and shuffle it in handleClick
+  // function handleClick() {
+  //   console.log('clicked');
+  //   // setShuffledMovies(newArray);
+  //   const shuffledItems = shuffleArray(movies)
+
+  //     setSelectedMovies(shuffledItems)
+  //     // console.log('selectedMovies', selectedMovies);
+  // }
   
+
   // making a new array (ghibliMovies) with the information needed for the app (title, image, and id)
   const ghibliMovies = []
 
@@ -61,7 +74,7 @@ function App() {
   const clone = JSON.parse(JSON.stringify(ghibliMovies));
     // changing the #ids for the newly cloned array, so that each item has a unique #id
   clone.map( (item) => {
-    item.id = item.id + 99
+  item.id = item.id + 99
   })
 
   // concatonating the two arrays together so that the 6 pairs of cards can be displayed on screen
@@ -85,7 +98,7 @@ function App() {
     array.map( (item) => {
       if (item.image === choice) {
         item.matched = true
-        // console.log(item.matched)
+        // console.log(item, item.matched)
       } else {
         return item.image
       }
@@ -95,10 +108,9 @@ function App() {
 // console.log(trueMatch(finalSelections));
 
 // create a function that will set the FinalSelections array with the newly updated array that is returned in the trueMatch()
-const updateFinalSelections = function(array) {
-  setFinalSelections(array);
-}
-
+  const updateFinalSelections = function(array) {
+    setFinalSelections(array);
+  }
   
 // page reload button to set a new game
   function handleClick(e) {
@@ -109,7 +121,6 @@ const updateFinalSelections = function(array) {
       setBaseUrl(e.target.value)
     } else {
       setBaseUrl('');
-
     }
   }
   
@@ -122,15 +133,17 @@ const updateFinalSelections = function(array) {
   // getting the API call
   useEffect( () => {
     axios({
-      url: baseUrl,
+      url: baseUrl, 
     }).then((apiData) => {
       // console.log(apiData.data);
       
       const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
       
       setMovies(shuffledThings);
+
+      // setMovies(apiData.data)
     })
-  }, [ baseUrl ])
+  }, [baseUrl])
 
 
   return (
