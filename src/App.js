@@ -61,7 +61,9 @@ function App() {
       id: movie.id,
       matched: false
     }
-    ghibliMovies.push(movieData);
+    return (
+      ghibliMovies.push(movieData)
+    )
   })
   // console.log('newArray', ghibliMovies);
 

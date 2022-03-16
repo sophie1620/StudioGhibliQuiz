@@ -65,7 +65,7 @@ function Display(props) {
         setTwoId('')
         setDisabled(false)
         // stretch goal: add a counter to setTurns()
-        console.log('reset')
+        // console.log('reset')
     }
 
 
