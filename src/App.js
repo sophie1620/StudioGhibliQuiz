@@ -148,12 +148,13 @@ function App() {
 
   return (
     <div className="App">
-      <header>  
+      <header> 
+        <img className='totoro' src="/assets/totoro.png" alt="" />
         <h1>Do you remember Ghilbi?</h1>
       </header>
-      <main className='wrapper'>
 
-        <p>Test your memory! Find the matching pairs by clicking on each card to reveal it.  </p>
+      <main className='wrapper'>
+        <p className='instructions'>Test your memory! Find the matching pairs by clicking on each card to reveal it.  </p>
 
         <button value='https://ghibliapi.herokuapp.com/films' onClick={handleClick}>New Game</button>
 
@@ -161,6 +162,8 @@ function App() {
           <Display moviePosters={finalSelections} matchedPosters={trueMatch} flippedCards={updateFinalSelections} />
           {/* pass in the final poster array as props to Display.js */}
         </div>
+
+        <img className='totoroPic' src="/assets/totoro.png" alt="" />
       </main>
       <footer>
         <p>Created and designed by <a href="sophielai.ca">Sophie Lai</a></p>

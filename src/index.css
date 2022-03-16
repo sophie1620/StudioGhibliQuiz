@@ -5,13 +5,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(95, 158, 160, 0.692);
+  background-image: url(../public/assets/mainBG.svg);
+  background-position: cover;
 }
 
 h1 {
   font-family: 'Montserrat', sans-serif;
+  color: aliceblue;
   font-size: 3rem;
   margin: 0;
-  padding: 1.5rem;
+  padding: 2.5rem 1.5rem 2rem;
 }
 
 p {
@@ -31,7 +34,11 @@ a:focus {
 }
 
 header {
-  background-color: cadetblue;
+  background-color: #002f5b;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 footer {
