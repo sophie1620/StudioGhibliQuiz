@@ -53,7 +53,7 @@ function Display(props) {
             }
 
         }
-    }, [choiceOne, choiceTwo])
+    }, [props, choiceOne, choiceTwo])
 
 
 
