@@ -53,11 +53,7 @@ function App() {
   // making a new array (ghibliMovies) with the information needed for the app (title, image, and id)
   const ghibliMovies = []
 
-  movies.map((movie) => {
-    // const title = movie.title
-    // const image = movie.image
-    // const id = movie.id
-
+  movies.map(function(movie) {
       // create an object for each movie, and push object into the ghibliMovies array
     const movieData = {
       title: movie.title,
@@ -73,7 +69,7 @@ function App() {
   // cloning the ghibliMovies array so that we can create paired cards for users to match
   const clone = JSON.parse(JSON.stringify(ghibliMovies));
     // changing the #ids for the newly cloned array, so that each item has a unique #id
-  clone.map( (item) => {
+  clone.map( function(item) {
   item.id = item.id + 99
   })
 
@@ -95,7 +91,7 @@ function App() {
   
   // function that will map through the array to change the matched attribute
   const trueMatch = function(array, choice) {
-    array.map( (item) => {
+    array.map( function(item) {
       if (item.image === choice) {
         item.matched = true
         // console.log(item, item.matched)
