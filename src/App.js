@@ -54,9 +54,9 @@ function App() {
   const ghibliMovies = []
 
   movies.map((movie) => {
-    const title = movie.title
-    const image = movie.image
-    const id = movie.id
+    // const title = movie.title
+    // const image = movie.image
+    // const id = movie.id
 
       // create an object for each movie, and push object into the ghibliMovies array
     const movieData = {
