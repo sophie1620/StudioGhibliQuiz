@@ -79,6 +79,7 @@ function App() {
 
   // concatonating the two arrays together so that the 6 pairs of cards can be displayed on screen
   const combinedArray = ghibliMovies.concat(clone);
+
   // shuffing the 12 cards, so that the order is displayed at random
   // console.log('posters', posters);
   const posters = shuffleArray(combinedArray);
@@ -91,14 +92,17 @@ function App() {
     setFinalSelections(posters)
   }, [movies])
 
+  console.log('posters', posters)
 
   
   // function that will map through the array to change the matched attribute
   const trueMatch = function(array, choice) {
     array.map( function(item) {
       if (item.image === choice) {
-        item.matched = true
+        
+        return item.matched = true
         // console.log(item, item.matched)
+
       } else {
         return item.image
       }
