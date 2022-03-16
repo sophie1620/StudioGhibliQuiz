@@ -21,9 +21,9 @@ import Display from './component/Display.js';
 
 function App() {
   const [ movies, setMovies ] = useState([])
-  // const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
-  const [ selectedMovies, setSelectedMovies ] = useState([])
-  const [ splicedMovies, setSplicedMovies ] = useState([])
+  const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
+  // const [ selectedMovies, setSelectedMovies ] = useState([])
+  // const [ slicedMovies, setSlicedMovies ] = useState([])
   const [ finalSelections, setFinalSelections ] = useState([])
 
 
@@ -39,22 +39,28 @@ function App() {
   }
   
 
-  // take the data that is received from API and shuffle it in handleClick
-  function handleClick() {
-    console.log('clicked');
-    // setShuffledMovies(newArray);
-    const shuffledItems = shuffleArray(movies)
+  // // take the data that is received from API and shuffle it in handleClick
+  // function handleClick() {
+  //   console.log('clicked');
+  //   // setShuffledMovies(newArray);
+  //   const shuffledItems = shuffleArray(movies)
+    
+  //   const doubled = [... shuffledItems]
+    
+  //   const newFinalArray = doubled.slice(0, 6)
+  //   setSelectedMovies(shuffledItems)
+  //   setSlicedMovies(newFinalArray)
 
-      setSelectedMovies(shuffledItems)
-      // console.log('selectedMovies', selectedMovies);
-  }
+
+  //   console.log(' sliced Movies', slicedMovies);
+  //   }
   
   
-  function sliced() {
-    setSplicedMovies(selectedMovies.slice(6));
-  }
+  // function sliced() {
+  //   setSplicedMovies(selectedMovies.slice(6));
+  // }
 
-  console.log(splicedMovies);
+  // console.log(splicedMovies);
 
 
   // making a new array (ghibliMovies) with the information needed for the app (title, image, and id)
@@ -124,16 +130,16 @@ function App() {
   }
   
 // page reload button to set a new game
-  // function handleClick(e) {
-  //   // window.location.reload(false);
-  //   e.preventDefault(e);
-  //   // console.log(e.target.value);
-  //   if (baseUrl === '') {
-  //     setBaseUrl(e.target.value)
-  //   } else {
-  //     setBaseUrl('');
-  //   }
-  // }
+  function handleClick(e) {
+    // window.location.reload(false);
+    e.preventDefault(e);
+    // console.log(e.target.value);
+    if (baseUrl === '') {
+      setBaseUrl(e.target.value)
+    } else {
+      setBaseUrl('');
+    }
+  }
   
   // function addUrlLink(value) {
   //   setBaseUrl(value);
@@ -144,17 +150,18 @@ function App() {
   // getting the API call
   useEffect( () => {
     axios({
-      url: 'https://ghibliapi.herokuapp.com/films', 
+      url: baseUrl, 
     }).then((apiData) => {
       // console.log(apiData.data);
       
-      // const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
+      const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
       
-      // setMovies(shuffledThings);
+      setMovies(shuffledThings);
 
-      setMovies(apiData.data)
+      // setMovies(apiData.data)
+      // setSelectedMovies(apiData.data)
     })
-  }, [])
+  }, [baseUrl])
 
 
   return (
