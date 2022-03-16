@@ -133,11 +133,11 @@ function App() {
   function handleClick(e) {
     // window.location.reload(false);
     e.preventDefault(e);
-    // console.log(e.target.value);
+    console.log(e.target.value);
     if (baseUrl === '') {
       setBaseUrl(e.target.value)
     } else {
-      setBaseUrl('');
+      setBaseUrl('')
     }
   }
   
@@ -154,12 +154,8 @@ function App() {
     }).then((apiData) => {
       // console.log(apiData.data);
       
-      const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
-      
+      const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);  
       setMovies(shuffledThings);
-
-      // setMovies(apiData.data)
-      // setSelectedMovies(apiData.data)
     })
   }, [baseUrl])
 
