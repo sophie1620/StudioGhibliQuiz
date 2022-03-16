@@ -21,9 +21,9 @@ import Display from './component/Display.js';
 
 function App() {
   const [ movies, setMovies ] = useState([])
-  // const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
-  const [ selectedMovies, setSelectedMovies ] = useState([])
-  const [ splicedMovies, setSplicedMovies ] = useState([])
+  const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
+  // const [ selectedMovies, setSelectedMovies ] = useState([])
+  // const [ slicedMovies, setSlicedMovies ] = useState([])
   const [ finalSelections, setFinalSelections ] = useState([])
 
 
@@ -38,22 +38,27 @@ function App() {
     return array
   }
   
-
   // // take the data that is received from API and shuffle it in handleClick
   // function handleClick() {
   //   console.log('clicked');
   //   // setShuffledMovies(newArray);
   //   const shuffledItems = shuffleArray(movies)
 
-  //     setSelectedMovies(shuffledItems)
-  //     // console.log('selectedMovies', selectedMovies);
+  //   const doubled = [...shuffledItems]
+    
+  //   const newFinalArray = doubled.slice(0, 6)
+  //   setSelectedMovies(shuffledItems)
+  //   setSlicedMovies(newFinalArray)
+
+  //   // console.log(' sliced Movies', slicedMovies);
   // }
+
   
 
   // making a new array (ghibliMovies) with the information needed for the app (title, image, and id)
   const ghibliMovies = []
 
-  movies.map(function(movie) {
+  slicedMovies.map(function(movie) {
       // create an object for each movie, and push object into the ghibliMovies array
     const movieData = {
       title: movie.title,
@@ -141,8 +146,8 @@ function App() {
     }).then((apiData) => {
       // console.log(apiData.data);
       
-      // const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
-      // setMovies(shuffledThings);
+      const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);
+      setMovies(shuffledThings);
 
       // setMovies(apiData.data)
     })
