@@ -70,7 +70,9 @@ function App() {
   const clone = JSON.parse(JSON.stringify(ghibliMovies));
     // changing the #ids for the newly cloned array, so that each item has a unique #id
   clone.map( function(item) {
-  item.id = item.id + 99
+    return (
+      item.id = item.id + 99
+    )
   })
 
   // concatonating the two arrays together so that the 6 pairs of cards can be displayed on screen
