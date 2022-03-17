@@ -91,6 +91,8 @@ function App() {
     setMoves(0)
   } //end of handleClick function
   
+
+  // to keep track of the number of clicks the user makes
   function movesCounter() {
     setMoves (moves + 1)
   }

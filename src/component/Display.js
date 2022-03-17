@@ -70,7 +70,7 @@ function Display(props) {
 
 
     return (
-        <div className="cardContainer" onClick={props.movesCounter}>
+        <div className="cardContainer">
             {  
                 props.cardSelections.map( (card) => {
                     // poster is the prop handed down to PosterPic.js
@@ -84,6 +84,7 @@ function Display(props) {
                         handleChoice={handleChoice}
                         flipped={ card.matched || card.id === oneId || card.id === twoId }
                         disabled={disabled}
+                        clickCounter={props.movesCounter}
                         />
                         )
                     })

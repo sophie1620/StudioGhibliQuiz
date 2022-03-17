@@ -2,6 +2,7 @@
 
 function CardPic(props) {
     // console.log('PosterPic Pros', props);
+    // console.log(props.clickCounter)
 
     // create a click event to attach the cardBack to the cardFront
     // pass this value into the choices useState in Display.js so that it can be compared
@@ -15,7 +16,7 @@ function CardPic(props) {
 
 
     return (
-        <div className="indivCard">
+        <div className="indivCard" onClick={!props.disabled ? props.clickCounter : null}>
                 <img className="cardFront" src={props.img} alt={props.alt} id={props.id} />
 
                 <img 
