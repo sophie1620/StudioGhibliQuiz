@@ -31,7 +31,7 @@ button {
   border: 5px solid cadetblue;
   padding: 1rem;
   width: 200px;
-  margin: 1rem auto 2rem;
+  margin: 1rem auto 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 3px 5px 8px;
 }
 
@@ -66,7 +66,7 @@ button:active {
 }
 
 .gameContainer {
-  margin: 2rem auto 4rem;
+  margin: 1rem auto 4rem;
   border-radius: 20px;
   background-color: rgba(240, 248, 255, 0.8);  
   padding: 2rem;

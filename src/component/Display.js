@@ -3,10 +3,6 @@ import CardPic from "./CardPic.js"
 import { useState, useEffect } from 'react'
 
 function Display(props) {
-    // console.log(props.cardSelections);
-    // console.log(props.matchedCards||matchedPosters);
-    // console.log(props.flippedCards);
-    // console.log(props.movesCounter);
 
     // need to set useState to keep track of the values of the cards clicked IN THIS COMPONENT--b/c it's the one that sees the 'big picture' and can compare the items
     const [ choiceOne, setChoiceOne ] = useState(null)
@@ -20,34 +16,24 @@ function Display(props) {
         // if choiceOne is set, then update choiceTwo, else update choiceOne
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
         
+        // create an id state to help keep track of what cards can have the .flipped class added and when
         oneId ? setTwoId(id) : setOneId(id)
-        // console.log('card', choiceOne , choiceTwo)
-        // console.log('card2', choiceTwo.img)
-
-        // console.log('ID!!!!!', oneId, twoId)
     }
-
 
     // create a useEffect that will compare choiceOne and choiceTWO values ONLY after they have been assigned
     useEffect(() => {
         if (choiceOne && choiceTwo) {
             setDisabled(true)
             if (choiceOne.img === choiceTwo.img) {
-                // console.log('we have a match!', choiceOne, choiceTwo);
 
                 // create a .map that will target the matched attribute in props and change it to true and return it as a new array
                 const matched = props.matchedCards(props.cardSelections, choiceOne.img);
-                // console.log(props.moviePosters)
-
-                // console.log(matched)
 
                 // access setFinalSelections which has been passed down as a function and we update it with the new array
                 props.flippedCards(matched);
-                // console.log(props.moviePosters);
                 
                 reset()
             } else {
-                // console.log('not a match');
                 setTimeout( () => {
                     reset()
                 }, 1000)
@@ -64,8 +50,6 @@ function Display(props) {
         setOneId('')
         setTwoId('')
         setDisabled(false)
-        // stretch goal: add a counter to setTurns()
-        // console.log('reset')
     }
 
 
@@ -73,8 +57,6 @@ function Display(props) {
         <div className="cardContainer">
             {  
                 props.cardSelections.map( (card) => {
-                    // poster is the prop handed down to PosterPic.js
-                    // console.log(poster)
                     return (
                         <CardPic 
                         img={card.image} 
@@ -86,9 +68,9 @@ function Display(props) {
                         disabled={disabled}
                         clickCounter={props.movesCounter}
                         />
-                        )
-                    })
-                }
+                    )
+                })
+            }
         </div>
     )
 }

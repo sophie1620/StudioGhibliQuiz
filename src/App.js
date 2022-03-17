@@ -22,15 +22,13 @@ function App() {
     return array
   }
   
-  // function that will map through the array to change the matched attribute
+  // function that will map through the array to change the matched attribute so user knows what cards are matched
   const trueMatch = function(array, choice) {
     array.map( function(item) {
       if (item.image === choice) {
-        
-        setMatchedCardsTracker( matchedCardsTracker + 1)
 
+        setMatchedCardsTracker( matchedCardsTracker + 1)
         return item.matched = true
-        // console.log(item, item.matched)
 
       } else {
         return item.image
@@ -38,18 +36,15 @@ function App() {
     })
     return array
   }
-// console.log(trueMatch(finalSelections));
 
 // create a function that will set the FinalSelections array with the newly updated array that is returned in the trueMatch()
   const updateFinalSelections = function(array) {
     setFinalCardSelections(array);
   }
   
-
+  // handle click to display a new set of shuffled cards 
   function handleClick() {
-    // console.log(apiResults);
     const shuffledApiResults = shuffleArray(apiResults)
-    // setShuffledMovies(newArray);
 
     //take only 6 of the items from the array
     const finalApiArray = shuffledApiResults.slice(0, 6)
@@ -69,7 +64,6 @@ function App() {
         ghibliMovies.push(movieData)
       )
     })
-    // console.log(ghibliMovies)
 
     // cloning the ghibliMovies array so that we can create paired cards for users to match
     const clone = JSON.parse(JSON.stringify(ghibliMovies));
@@ -84,14 +78,14 @@ function App() {
     // concatonating the two arrays together so that the 6 pairs of cards can be displayed on screen
     const allGhibliResults = ghibliMovies.concat(clone);
 
-    // shuffing the 12 cards, so that the order is displayed at random
-    // console.log('posters', posters);
+    // shuffling the 12 cards, so that the order is displayed at random
     const posterCards = shuffleArray(allGhibliResults);
-    // console.log(posters);
 
     setFinalCardSelections(posterCards)
+
+    setMatchedCardsTracker(0)
     setMoves(0)
-    matchedCardsTracker(0)
+
   } //end of handleClick function
   
 
@@ -115,7 +109,7 @@ function App() {
   return (
     <div className="App">
       <header> 
-        <img className='totoro' src="/assets/totoro.png" alt="" />
+        <img className='totoro' src="/assets/totoro.png" alt="picture of Totoro" />
         <h1>Do you remember Ghilbi?</h1>
       </header>
 
@@ -132,17 +126,22 @@ function App() {
           <div>
             <p className={ moves === 0 ? 'displayNoneMoves' : 'displayMoves' }>Moves: {moves}</p>
           </div>
-          <Display cardSelections={ finalCardSelections } matchedCards={trueMatch} flippedCards={updateFinalSelections}movesCounter={movesCounter}/>
-        </div>
 
-        <img className='totoroPic' src="/assets/totoro.png" alt="" />
+          <Display 
+            cardSelections={ finalCardSelections } 
+            matchedCards={trueMatch} 
+            flippedCards={updateFinalSelections}
+            movesCounter={movesCounter}
+          />
+        </div> 
+
+        <img className='totoroPic' src="/assets/totoro.png" alt="picture of Totoro" />
       </main>
+
       <footer>
         <p>Created and designed by <a href="sophielai.ca">Sophie Lai</a></p>
         <p>API courtesy of <a href="https://ghibliapi.herokuapp.com/#">Studio Ghibli API</a></p>
       </footer>
-
-
     </div>
   );
 }
