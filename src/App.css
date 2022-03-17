@@ -44,7 +44,7 @@ button:active {
   box-shadow: none;
 }
 
-.userWins {
+.animate__animated {
   font-size: 3rem;
   color: orange;
   font-family: 'Montserrat', sans-serif;

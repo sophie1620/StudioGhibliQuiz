@@ -125,7 +125,9 @@ function App() {
         <button onClick={handleClick}>New Game</button>
 
         <div className='gameContainer wrapper'>
-          <p className={ matchedCardsTracker === 6 ? 'userWins' : 'displayNone'}>YOU WIN!</p>
+          <div className={ matchedCardsTracker === 6 ? 'userWins' : 'displayNone'}>
+            <p className={matchedCardsTracker === 6 ? 'animate__animated animate__fadeIn animate__slow' : 'displayNone'}>YOU WIN!</p>
+          </div>
 
           <div>
             <p className={ moves === 0 ? 'displayNoneMoves' : 'displayMoves' }>Moves: {moves}</p>
