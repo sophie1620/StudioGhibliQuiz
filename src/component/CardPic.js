@@ -17,7 +17,7 @@ function CardPic(props) {
 
 
     return (
-        <div className="indivCard" onClick={!props.disabled ? props.clickCounter : null}>
+        <div className="indivCard animate__animated animate__fadeIn animate__slower" onClick={!props.disabled ? props.clickCounter : null}>
                 <img className="cardFront" src={props.img} alt={props.alt} id={props.id} />
 
                 <img 
