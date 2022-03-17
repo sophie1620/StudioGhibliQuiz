@@ -1,6 +1,6 @@
-// PosterPic.js
+// CardPic.js
 
-function PosterPic(props) {
+function CardPic(props) {
     // console.log('PosterPic Pros', props);
 
     // create a click event to attach the cardBack to the cardFront
@@ -28,4 +28,4 @@ function PosterPic(props) {
     )
 }
 
-export default PosterPic;
+export default CardPic;
