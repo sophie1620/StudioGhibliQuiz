@@ -9,6 +9,7 @@ function App() {
   const [ apiResults, setApiResults ] = useState([])
   const [ finalCardSelections, setFinalCardSelections ] = useState([])
   const [moves, setMoves] = useState(0)
+  const [ matchedCardsTracker, setMatchedCardsTracker ] = useState(0)
 
   // shuffle function to shuffle the items and return a new array
   function shuffleArray(array) {
@@ -26,6 +27,8 @@ function App() {
     array.map( function(item) {
       if (item.image === choice) {
         
+        setMatchedCardsTracker( matchedCardsTracker + 1)
+
         return item.matched = true
         // console.log(item, item.matched)
 
@@ -44,7 +47,6 @@ function App() {
   
 
   function handleClick() {
-
     // console.log(apiResults);
     const shuffledApiResults = shuffleArray(apiResults)
     // setShuffledMovies(newArray);
@@ -89,6 +91,7 @@ function App() {
 
     setFinalCardSelections(posterCards)
     setMoves(0)
+    matchedCardsTracker(0)
   } //end of handleClick function
   
 
@@ -96,7 +99,6 @@ function App() {
   function movesCounter() {
     setMoves (moves + 1)
   }
-  
 
   // getting the API calls
   useEffect( () => {
@@ -109,7 +111,6 @@ function App() {
       // setSelectedMovies(apiData.data)
     })
   }, [])
-
 
   return (
     <div className="App">
@@ -124,11 +125,12 @@ function App() {
         <button onClick={handleClick}>New Game</button>
 
         <div className='gameContainer wrapper'>
+          <p className={ matchedCardsTracker === 6 ? 'userWins' : 'displayNone'}>YOU WIN!</p>
+
           <div>
             <p className={ moves === 0 ? 'displayNoneMoves' : 'displayMoves' }>Moves: {moves}</p>
           </div>
           <Display cardSelections={ finalCardSelections } matchedCards={trueMatch} flippedCards={updateFinalSelections}movesCounter={movesCounter}/>
-          {/* {/* pass in the final poster array as props to Display.js */}
         </div>
 
         <img className='totoroPic' src="/assets/totoro.png" alt="" />

@@ -12,6 +12,7 @@ function CardPic(props) {
             // access the function handed down to this component from Display.js
             props.handleChoice(props, props.id)
         }
+        
     }
 
 

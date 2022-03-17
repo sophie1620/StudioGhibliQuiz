@@ -3,7 +3,7 @@ import CardPic from "./CardPic.js"
 import { useState, useEffect } from 'react'
 
 function Display(props) {
-    // console.log(props.cardSelections||moviePosters) 
+    // console.log(props.cardSelections);
     // console.log(props.matchedCards||matchedPosters);
     // console.log(props.flippedCards);
     // console.log(props.movesCounter);
