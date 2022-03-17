@@ -59,14 +59,14 @@ function Display(props) {
                 props.cardSelections.map( (card) => {
                     return (
                         <CardPic 
-                        img={card.image} 
-                        alt={card.title} 
-                        key={card.id}
-                        id={card.id}
-                        handleChoice={handleChoice}
-                        flipped={ card.matched || card.id === oneId || card.id === twoId }
-                        disabled={disabled}
-                        clickCounter={props.movesCounter}
+                            img={card.image} 
+                            alt={card.title} 
+                            key={card.id}
+                            id={card.id}
+                            handleChoice={handleChoice}
+                            flipped={ card.matched || card.id === oneId || card.id === twoId }
+                            disabled={disabled}
+                            clickCounter={props.movesCounter}
                         />
                     )
                 })

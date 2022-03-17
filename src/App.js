@@ -7,6 +7,7 @@ import Display from './component/Display.js';
 
 function App() {
   const [ apiResults, setApiResults ] = useState([])
+  const [ errorMessage, setErrorMessage ] = useState('displayNone')
   const [ finalCardSelections, setFinalCardSelections ] = useState([])
   const [moves, setMoves] = useState(0)
   const [ matchedCardsTracker, setMatchedCardsTracker ] = useState(0)
@@ -99,12 +100,15 @@ function App() {
     axios({
       url: 'https://ghibliapi.herokuapp.com/films', 
     }).then((apiData) => {
-      // console.log(apiData.data);
-      
-      setApiResults(apiData.data)
-      // setSelectedMovies(apiData.data)
+
+      if (apiData.status === 200 || apiData.statusText === 'OK') {
+        setApiResults(apiData.data)
+      } else {
+        setErrorMessage('displayError')
+      }
     })
   }, [])
+
 
   return (
     <div className="App">
@@ -119,16 +123,19 @@ function App() {
         <button onClick={handleClick}>New Game</button>
 
         <div className='gameContainer wrapper'>
-          <div className={ matchedCardsTracker === 6 ? 'userWins' : 'displayNone'}>
-            <p className={matchedCardsTracker === 6 ? 'animate__animated animate__fadeIn animate__slow' : 'displayNone'}>YOU WIN!</p>
+
+          <p className={ errorMessage }>Unfortunately the website is down right now.  Please come back later to test your memory skills!  We trust that you'll remember to do so! 😉</p>
+
+          <div className={ matchedCardsTracker === 6 ? 'userWins' : 'displayNone' }>
+            <p className={ matchedCardsTracker === 6 ? 'animate__animated animate__fadeIn animate__slow' : 'displayNone' }>YOU WIN!</p>
           </div>
 
           <div>
-            <p className={ moves === 0 ? 'displayNoneMoves' : 'displayMoves' }>Moves: {moves}</p>
+            <p className={ moves === 0 ? 'displayNoneMoves' : 'displayMoves' }>Moves: { moves }</p>
           </div>
 
           <Display 
-            cardSelections={ finalCardSelections } 
+            cardSelections={finalCardSelections} 
             matchedCards={trueMatch} 
             flippedCards={updateFinalSelections}
             movesCounter={movesCounter}

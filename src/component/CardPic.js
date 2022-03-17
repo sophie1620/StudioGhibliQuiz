@@ -13,7 +13,7 @@ function CardPic(props) {
     return (
         <div 
             className="indivCard animate__animated animate__fadeIn animate__slower" 
-            onClick={!props.disabled ? props.clickCounter : null}
+            onClick={ !props.disabled ? props.clickCounter : null }
         >
                 <img 
                     className="cardFront" 
@@ -23,10 +23,11 @@ function CardPic(props) {
                 />
 
                 <img 
-                className={props.flipped ? 'flipped' : 'cardBack' }
-                src="/assets/newCardBack.jpg" alt="card back" 
-                onClick={handleClick}
-                disabled={props.disabled}
+                    className={ props.flipped ? 'flipped' : 'cardBack' }
+                    src="/assets/newCardBack.jpg" 
+                    alt="card back" 
+                    onClick={handleClick}
+                    disabled={props.disabled}
                 /> 
         </div>
     )

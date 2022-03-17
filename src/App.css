@@ -53,6 +53,13 @@ button:active {
   font-weight: 600;
 }
 
+.displayError {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 .displayNone {
   display: none;
 }
