@@ -6,17 +6,8 @@ import Display from './component/Display.js';
 
 
 function App() {
-<<<<<<< HEAD
-  const [ movies, setMovies ] = useState([])
-  const [baseUrl, setBaseUrl] = useState('https://ghibliapi.herokuapp.com/films')
-  // const [ selectedMovies, setSelectedMovies ] = useState([])
-  // const [ slicedMovies, setSlicedMovies ] = useState([])
-  const [ finalSelections, setFinalSelections ] = useState([])
-
-=======
   const [ apiResults, setApiResults ] = useState([])
   const [ finalCardSelections, setFinalCardSelections ] = useState([])
->>>>>>> apidata
 
   // shuffle function to shuffle the items and return a new array
   function shuffleArray(array) {
@@ -29,79 +20,6 @@ function App() {
     return array
   }
   
-<<<<<<< HEAD
-
-  // // take the data that is received from API and shuffle it in handleClick
-  // function handleClick() {
-  //   console.log('clicked');
-  //   // setShuffledMovies(newArray);
-  //   const shuffledItems = shuffleArray(movies)
-    
-  //   const doubled = [... shuffledItems]
-    
-  //   const newFinalArray = doubled.slice(0, 6)
-  //   setSelectedMovies(shuffledItems)
-  //   setSlicedMovies(newFinalArray)
-
-
-  //   console.log(' sliced Movies', slicedMovies);
-  //   }
-  
-  
-  // function sliced() {
-  //   setSplicedMovies(selectedMovies.slice(6));
-  // }
-
-  // console.log(splicedMovies);
-
-
-  // making a new array (ghibliMovies) with the information needed for the app (title, image, and id)
-  const ghibliMovies = []
-
-  movies.map(function(movie) {
-      // create an object for each movie, and push object into the ghibliMovies array
-    const movieData = {
-      title: movie.title,
-      image: movie.image,
-      id: movie.id,
-      matched: false
-    }
-    return (
-      ghibliMovies.push(movieData)
-    )
-  })
-  // console.log('newArray', ghibliMovies);
-
-  
-  // cloning the ghibliMovies array so that we can create paired cards for users to match
-  const clone = JSON.parse(JSON.stringify(ghibliMovies));
-    // changing the #ids for the newly cloned array, so that each item has a unique #id
-  clone.map( function(item) {
-    return (
-      item.id = item.id + 99
-    )
-  })
-
-  // concatonating the two arrays together so that the 6 pairs of cards can be displayed on screen
-  const combinedArray = ghibliMovies.concat(clone);
-
-  // shuffing the 12 cards, so that the order is displayed at random
-  // console.log('posters', posters);
-  const posters = shuffleArray(combinedArray);
-  // console.log(posters);
-
-
-  // delay the update to the finalSelections state with a useEffect because it will continue to make an API call otherwise ~ I have no idea why
-  // use this finalSelections array to pass as a prop to Display.js to change the matched key to true to disable their 'flip-ability'
-  useEffect( () => {
-    setFinalSelections(posters)
-  }, [movies])
-
-  // console.log('posters', posters)
-
-  
-=======
->>>>>>> apidata
   // function that will map through the array to change the matched attribute
   const trueMatch = function(array, choice) {
     array.map( function(item) {
@@ -123,18 +41,6 @@ function App() {
     setFinalCardSelections(array);
   }
   
-<<<<<<< HEAD
-// page reload button to set a new game
-  function handleClick(e) {
-    // window.location.reload(false);
-    e.preventDefault(e);
-    console.log(e.target.value);
-    if (baseUrl === '') {
-      setBaseUrl(e.target.value)
-    } else {
-      setBaseUrl('')
-    }
-=======
 
   function handleClick() {
 
@@ -181,7 +87,6 @@ function App() {
     // console.log(posters);
 
     setFinalCardSelections(posterCards)
->>>>>>> apidata
   }
   
 
@@ -192,13 +97,8 @@ function App() {
     }).then((apiData) => {
       // console.log(apiData.data);
       
-<<<<<<< HEAD
-      const shuffledThings =  shuffleArray(apiData.data).splice(6, 6);  
-      setMovies(shuffledThings);
-=======
       setApiResults(apiData.data)
       // setSelectedMovies(apiData.data)
->>>>>>> apidata
     })
   }, [])
 
