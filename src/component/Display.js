@@ -1,10 +1,10 @@
 //Display.js 
-import PosterPic from "./PosterPic.js"
+import CardPic from "./CardPic.js"
 import { useState, useEffect } from 'react'
 
 function Display(props) {
-    // console.log(props.moviePosters) 
-    // console.log(props.matchedPosters);
+    // console.log(props.cardSelections||moviePosters) 
+    // console.log(props.matchedCards||matchedPosters);
     // console.log(props.flippedCards);
 
     // need to set useState to keep track of the values of the cards clicked IN THIS COMPONENT--b/c it's the one that sees the 'big picture' and can compare the items
@@ -35,7 +35,7 @@ function Display(props) {
                 // console.log('we have a match!', choiceOne, choiceTwo);
 
                 // create a .map that will target the matched attribute in props and change it to true and return it as a new array
-                const matched = props.matchedPosters(props.moviePosters, choiceOne.img);
+                const matched = props.matchedCards(props.cardSelections, choiceOne.img);
                 // console.log(props.moviePosters)
 
                 // console.log(matched)
@@ -53,7 +53,7 @@ function Display(props) {
             }
 
         }
-    }, [choiceOne, choiceTwo])
+    }, [ choiceOne, choiceTwo])
 
 
 
@@ -72,17 +72,17 @@ function Display(props) {
     return (
         <div className="cardContainer">
             {  
-                props.moviePosters.map( (poster) => {
+                props.cardSelections.map( (card) => {
                     // poster is the prop handed down to PosterPic.js
                     // console.log(poster)
                     return (
-                        <PosterPic 
-                        img={poster.image} 
-                        alt={poster.title} 
-                        key={poster.id}
-                        id={poster.id}
+                        <CardPic 
+                        img={card.image} 
+                        alt={card.title} 
+                        key={card.id}
+                        id={card.id}
                         handleChoice={handleChoice}
-                        flipped={ poster.matched || poster.id === oneId || poster.id === twoId }
+                        flipped={ card.matched || card.id === oneId || card.id === twoId }
                         disabled={disabled}
                         />
                     )
