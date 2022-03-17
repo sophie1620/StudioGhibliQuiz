@@ -42,6 +42,7 @@ button:hover {
 
 button:active {
   box-shadow: none;
+  background-color: rgb(219, 216, 216);
 }
 
 .animate__animated {
