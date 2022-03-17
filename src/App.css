@@ -44,11 +44,13 @@ button:active {
   box-shadow: none;
 }
 
-.display {
+.displayMoves {
   display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
-.displayNone {
+.displayNoneMoves {
   color: transparent;
 }
 

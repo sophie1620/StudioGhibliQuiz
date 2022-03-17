@@ -123,7 +123,7 @@ function App() {
 
         <div className='gameContainer wrapper'>
           <div>
-            <p className={ moves === 0 ? 'displayNone' : 'display' }>Moves: {moves}</p>
+            <p className={ moves === 0 ? 'displayNoneMoves' : 'displayMoves' }>Moves: {moves}</p>
           </div>
           <Display cardSelections={ finalCardSelections } matchedCards={trueMatch} flippedCards={updateFinalSelections}movesCounter={movesCounter}/>
           {/* {/* pass in the final poster array as props to Display.js */}
