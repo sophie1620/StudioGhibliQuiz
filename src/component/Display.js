@@ -6,6 +6,7 @@ function Display(props) {
     // console.log(props.cardSelections||moviePosters) 
     // console.log(props.matchedCards||matchedPosters);
     // console.log(props.flippedCards);
+    // console.log(props.movesCounter);
 
     // need to set useState to keep track of the values of the cards clicked IN THIS COMPONENT--b/c it's the one that sees the 'big picture' and can compare the items
     const [ choiceOne, setChoiceOne ] = useState(null)
@@ -56,7 +57,6 @@ function Display(props) {
     }, [ props, choiceOne, choiceTwo])
 
 
-
     // reset function to set choice states to null
     const reset = () => {
         setChoiceOne(null)
@@ -70,7 +70,7 @@ function Display(props) {
 
 
     return (
-        <div className="cardContainer">
+        <div className="cardContainer" onClick={props.movesCounter}>
             {  
                 props.cardSelections.map( (card) => {
                     // poster is the prop handed down to PosterPic.js
@@ -85,9 +85,9 @@ function Display(props) {
                         flipped={ card.matched || card.id === oneId || card.id === twoId }
                         disabled={disabled}
                         />
-                    )
-                })
-            }
+                        )
+                    })
+                }
         </div>
     )
 }

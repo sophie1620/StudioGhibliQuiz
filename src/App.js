@@ -8,6 +8,7 @@ import Display from './component/Display.js';
 function App() {
   const [ apiResults, setApiResults ] = useState([])
   const [ finalCardSelections, setFinalCardSelections ] = useState([])
+  const [moves, setMoves] = useState(0)
 
   // shuffle function to shuffle the items and return a new array
   function shuffleArray(array) {
@@ -87,6 +88,11 @@ function App() {
     // console.log(posters);
 
     setFinalCardSelections(posterCards)
+    setMoves(0)
+  } //end of handleClick function
+  
+  function movesCounter() {
+    setMoves (moves + 1)
   }
   
 
@@ -113,10 +119,13 @@ function App() {
       <main className='wrapper'>
         <p className='instructions'>Test your memory! Find the matching pairs by clicking on each card to reveal it.  </p>
 
-        <button value='https://ghibliapi.herokuapp.com/films' onClick={handleClick}>New Game</button>
+        <button onClick={handleClick}>New Game</button>
 
         <div className='gameContainer wrapper'>
-          <Display cardSelections={ finalCardSelections } matchedCards={trueMatch} flippedCards={updateFinalSelections} />
+          <div>
+            <p className={ moves === 0 ? 'displayNone' : 'display' }>Moves: {moves}</p>
+          </div>
+          <Display cardSelections={ finalCardSelections } matchedCards={trueMatch} flippedCards={updateFinalSelections}movesCounter={movesCounter}/>
           {/* {/* pass in the final poster array as props to Display.js */}
         </div>
 
